@@ -22,4 +22,8 @@ public class ExceptionsController {
 		return returnResponse(e.getMessage(), HttpStatus.NOT_FOUND);
 	}
 
+	@ExceptionHandler({ IllegalStateException.class, IllegalArgumentException.class })
+	ResponseEntity<String> illegalStateHandler(RuntimeException e) {
+		return returnResponse(e.getMessage(), HttpStatus.BAD_REQUEST);
+	}
 }
